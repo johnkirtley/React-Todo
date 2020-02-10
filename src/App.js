@@ -3,6 +3,7 @@ import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
 
+
 const todoItems = [
   {
     task: 'Organize Garage',
@@ -28,6 +29,23 @@ class App extends React.Component {
     };
   }
 
+  toggleCompleted = clickedId => {
+    const newTasks = this.state.todoItems.map(item => {
+      if (item.id === clickedId) {
+        return {
+          ...item,
+          completed: !item.completed
+        };
+      } else {
+        return item;
+      }
+    });
+
+    this.setState({
+      todoItems: newTasks
+    });
+  };
+
   addNewTask = itemText => {
     const newTask = {
       id: Date.now(),
@@ -44,7 +62,7 @@ class App extends React.Component {
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm addNewTask={this.addNewTask} />
-        <TodoList listItems={this.state.todoItems} />
+        <TodoList listItems={this.state.todoItems} toggleTask={this.toggleCompleted} />
       </div>
     );
   }
