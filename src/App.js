@@ -1,6 +1,16 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
+import Styled from 'styled-components';
+
+const Wrapper = Styled.div`
+display: flex;
+flex-flow: column;
+justify-content: center;
+align-items: center;
+background-color: yellow;
+
+`
 
 
 
@@ -68,11 +78,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <h2>Welcome to your Todo App!</h2>
         <TodoForm addNewTask={this.addNewTask} listItems={this.state.todoItems} tasks={this.state.todoItems} />
         <TodoList listItems={this.state.todoItems} toggleTask={this.toggleCompleted} removeTask={this.removeTask} />
-      </div>
+      </Wrapper>
     );
   }
 }

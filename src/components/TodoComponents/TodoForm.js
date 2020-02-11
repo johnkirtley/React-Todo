@@ -1,4 +1,11 @@
 import React from 'react'
+import Styled from 'styled-components';
+
+const Input = Styled.input`
+display: flex;
+flex-flow: column;
+border: 2px solid black;
+`
 
 
 class TodoForm extends React.Component {
@@ -25,7 +32,7 @@ class TodoForm extends React.Component {
         return (
             <>
                 <form onSubmit={this.submitForm}>
-                    <input type="text" value={this.state.newItem} onChange={this.handleChanges} />
+                    <Input type="text" value={this.state.newItem} onChange={this.handleChanges} />
                     <button>New Item</button>
                 </form>
             </>
